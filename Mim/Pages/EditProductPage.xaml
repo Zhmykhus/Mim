@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Mim.Pages.EditProductPage"
+             Title="EditProductPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        
+    
+        <VerticalStackLayout HorizontalOptions="Start">
+
+            <Button Text="Назад" Margin="5" Clicked="Back"/>
+
+            <Image Source="{Binding Product.Image, Mode=OneWay, Converter={StaticResource ByteArrayToImageSourceConverter}}" HeightRequest="120" WidthRequest="100" Grid.Row="0"/>
+            <Button Text="Добавить фото" WidthRequest="200" HeightRequest="45" Clicked="GetPhoto" Margin="10"/>
+
+            <Label Text="Артикул" />
+            <Entry Text="{Binding Product.Article}" WidthRequest="200" HeightRequest="45" />
+            <Label Text="Название" />
+            <Entry Text="{Binding Product.Title}" WidthRequest="200" HeightRequest="45" />
+            <Label Text="Цена" />
+            <Entry Text="{Binding Product.Cost}" WidthRequest="200" HeightRequest="45" />
+            <Label Text="Количество" />
+            <Entry Text="{Binding Product.Quantity}" WidthRequest="200" HeightRequest="45" />
+            <Label Text="Описание" />
+            <Entry Text="{Binding Product.Description}" WidthRequest="200" HeightRequest="45"/>
+            <Label Text="Скидка" />
+            <Entry Text="{Binding Product.Discount}" WidthRequest="200" HeightRequest="45" />
+        
+            <Label Text="Размер" />
+            <Picker ItemsSource="{Binding Sises}" SelectedItem="{Binding SelectedSize}" ItemDisplayBinding="{Binding Title}" WidthRequest="200" HeightRequest="45"/>
+            <Label Text="Категория" />
+            <Picker ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding Title}" WidthRequest="200" HeightRequest="45"/>
+            <Label Text="Поставщик" />
+            <Picker ItemsSource="{Binding Providers}" SelectedItem="{Binding SelectedProvider}" ItemDisplayBinding="{Binding Name}" WidthRequest="200" HeightRequest="45"/>
+
+            <Button Text="Сохранить" Clicked="Save" Margin="5"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

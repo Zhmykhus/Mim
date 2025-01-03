@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mim.Pages.AboutPage"
+             Title="AboutPage">
+    <!--Header-->
+    <Shell.TitleView>
+        <Label
+             Text="About Us"
+             FontFamily="Strande2"
+             TextColor="White"
+             VerticalTextAlignment="Center"
+             VerticalOptions="Center"
+             HeightRequest="50"
+             FontSize="Medium" 
+        />
+        
+    </Shell.TitleView>
+
+    <Grid BackgroundColor="{StaticResource MyColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="270"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="1" >
+            <Image Source="image.jpg" Margin="80,10,80,10"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2" Margin="40">
+            <Label Text="Version 09.02.07 ( 1135 )"  FontFamily="Strande2" HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Padding="0" Margin="7"/>
+            <Label Text="12122005"  FontFamily="Strande2" HorizontalOptions="Center" FontSize="Subtitle" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="3" Margin="40">
+            <Label Text="OOO Mg Vichevcky" FontFamily="Strande2"  HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Padding="0" Margin="5"/>
+            <Label Text="Modern Iconic Market" FontFamily="Strande2"  HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Padding="0" Margin="5"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="5" Margin="40">
+            <Label Text="2023-2024" FontFamily="Strande2"  HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Padding="0" Margin="5"/>
+        </StackLayout>
+
+
+    </Grid>
+</ContentPage>

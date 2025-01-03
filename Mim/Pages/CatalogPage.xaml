@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Mim.Pages.CatalogPage"
+             Title="CatalogPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+        <Label 
+            Text="Список товаров"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+            <VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="Start" Margin="10">
+
+                    <HorizontalStackLayout>
+                        <Picker ItemsSource="{Binding Providers}" SelectedItem="{Binding SelectedProvider}" ItemDisplayBinding="{Binding Name}" WidthRequest="200" HeightRequest="45"/>
+                        <Picker ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding Title}" WidthRequest="200" HeightRequest="45"/>
+                    </HorizontalStackLayout>
+                        
+                    <HorizontalStackLayout>
+                        <Picker ItemsSource="{Binding SortCostType}" SelectedItem="{Binding SelectedSortCostType}" WidthRequest="200" HeightRequest="45"/>
+                        <Picker ItemsSource="{Binding Sizes}" SelectedItem="{Binding SelectedSize}" ItemDisplayBinding="{Binding Title}" WidthRequest="200" HeightRequest="45"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Entry Placeholder="⌕ Search" Text="{Binding SearchText, UpdateSourceEventName='PropertyChanged'}" WidthRequest="200" HorizontalOptions="Start" Margin="5"/>
+                    </HorizontalStackLayout>
+                    
+                    <HorizontalStackLayout IsVisible="{Binding ButtonVisibility}">
+                        <Button WidthRequest="120" HeightRequest="45" Text="Добавить" Margin="3" Clicked="Create"/>
+                        <Button WidthRequest="120" HeightRequest="45" Text="Удалить" Margin="3" Clicked="Delete"/>
+                        <Button WidthRequest="120" HeightRequest="45" Text="Изменить" Margin="3" Clicked="Update"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <CollectionView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="200" Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding Image, Mode=OneWay, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="100" HeightRequest="100"/>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" TextColor="Black"/>
+                                    <Label Text="{Binding Rating, StringFormat='{0} ☆'}"  TextColor="Black"/>
+                                    <Label Text="{Binding CategoryName, StringFormat='Категория: {0}'} "  TextColor="Black"/>
+                                    <Label Text="{Binding Cost, StringFormat='{0}, руб.'}" TextColor="Black"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="2">
+                                    <Button WidthRequest="50" HeightRequest="50" Text="★" Clicked="AddWishList" Margin="5"/>
+                                    <Button WidthRequest="50" HeightRequest="50" Text="🛒" Clicked="AddCart" Margin="5"/>
+                                    <Button WidthRequest="50" HeightRequest="50" Text="👁️" Clicked="About" Margin="5" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

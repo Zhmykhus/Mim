@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Mim.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Mim.Pages"
+    FlyoutBehavior="Flyout" 
+    FlyoutHeaderBehavior="Fixed" 
+    FlyoutVerticalScrollMode="Auto"
+    Title="Mim"
+    BackgroundColor="{StaticResource MyColor}">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!--<Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+      Text="Welcome to MIM"
+      FontFamily="Strande2"
+      TextColor="White"
+      VerticalTextAlignment="Center"
+      VerticalOptions="Center"
+      HeightRequest="50"
+      FontSize="Medium" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>-->
+
+   
+    
+    
+    <!--Header-->
+    
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{StaticResource MyColor}"
+           HeightRequest="75"
+           Padding="0,0">
+            <Image Source="head1.png"/>
+
+        </Grid>
+    </Shell.FlyoutHeader>
+    
+
+    <!--Footer-->
+
+    <Shell.FlyoutFooter>
+        <Grid BackgroundColor="{StaticResource MyColor2}"
+            HeightRequest="32"
+            Padding="0,5,0,5">
+
+            <Label Text="Copyright 2024 MgVichevsky"
+                 FontSize="Small"
+                 HorizontalOptions="Center"
+                    FontFamily="Strande2"
+            />
+        </Grid>
+    </Shell.FlyoutFooter>
+
+    <Shell.FlyoutBackdrop>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="{StaticResource MyColor}" Offset="0.1"/>
+            <GradientStop Color="#3f1051" Offset="0.6"/>
+            <GradientStop Color="{StaticResource MyColor2}" Offset="1.6"/>
+        </LinearGradientBrush>
+    </Shell.FlyoutBackdrop>
+
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.25*,0.75*" Padding="0,8">
+                <Image Source="{Binding FlyoutIcon}" 
+                    HeightRequest="43"
+                    HorizontalOptions="Center"
+                />
+
+                <Label Grid.Column="1" 
+                    Text="{Binding Title}"
+                    FontSize="Small"
+                    FontFamily="Strande2"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    TextColor="{StaticResource MyColor3}"
+                />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Tab>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </Tab>
+
+    <FlyoutItem Title="About Us" Icon="information.svg">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}"/>
+    </FlyoutItem>
+
+    
+    
+    <FlyoutItem Title="Catalog" Icon="list.svg">
+        <ShellContent Route="CatalogPage" ContentTemplate="{DataTemplate local:CatalogPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Basket" Icon="basket.svg" IsVisible="{Binding OtherTabVisibiliy}">
+        <ShellContent Route="BucketPage" ContentTemplate="{DataTemplate local:BucketPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="WishList" Icon="basket.svg" IsVisible="{Binding OtherTabVisibiliy}">
+        <ShellContent Route="Favourite" ContentTemplate="{DataTemplate local:FavouritePage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Orders" Icon="settings.svg" IsVisible="{Binding OtherTabVisibiliy}">
+        <ShellContent Route="Orders" ContentTemplate="{DataTemplate local:OrderPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="AllOrders" Icon="settings.svg" IsVisible="{Binding TabAllVisibility}">
+        <ShellContent Route="AllOrders" ContentTemplate="{DataTemplate local:AllOrdersPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Purchases" Icon="settings.svg" IsVisible="{Binding OtherTabVisibiliy}">
+        <ShellContent Route="Purchases" ContentTemplate="{DataTemplate local:PurchasesPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settngs" Icon="settings.svg" IsVisible="{Binding OtherTabVisibiliy}">
+        <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}"/>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Exit" Icon="settings.svg">
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </FlyoutItem>
+
+
+
+
+</Shell>
+    
+    

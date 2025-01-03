@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mim.Pages.ProfilePage"
+             Title="ProfilePage">
+    <Shell.TitleView>
+        <Label
+      Text="Forgot Password"
+      FontFamily="Strande2"
+      TextColor="White"
+      VerticalTextAlignment="Center"
+      VerticalOptions="Center"
+      HeightRequest="50"
+      FontSize="Medium" 
+   />
+
+    </Shell.TitleView>
+    <!--<Grid>
+
+<rv:BackImageView 
+ Grid.Row="0"
+ Grid.Column="0" /> 
+</Grid>-->
+
+    <Grid BackgroundColor="{StaticResource MyColor}"
+ColumnDefinitions="*">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+      
+
+        <StackLayout Grid.Row="4">
+            <Label Text="Please enter your details so we can recover your password" Margin="5,0,0,0" TextColor="{DynamicResource MyColor2}" FontFamily="Strande2" FontSize="20"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="5">
+
+            <Label Text="Email:"  Margin="7,0,0,0" FontFamily="Strande2"   TextColor="{DynamicResource MyColor2}"/>
+            <Entry Text="{Binding Email.UserEmail}" Margin="7,0,0,7" ClearButtonVisibility="WhileEditing" />
+
+            <Button BackgroundColor="{DynamicResource MyColor3}" TextColor="White" Text="ResetPassword" FontFamily="Strande2" FontSize="Large" HeightRequest="45" WidthRequest="350" Clicked="SendCode" />
+
+            <Label Text="Enter Code:" Margin="7,0,0,0"  FontFamily="Strande2"  TextColor="{DynamicResource MyColor2}" IsVisible="{Binding IsVisibleFromCode}"/>
+            <Entry  Text="{Binding PasswordReset.Code}" Margin="7,0,0,7" ClearButtonVisibility="WhileEditing" Keyboard="Email" IsVisible="{Binding IsVisibleFromCode}"/>
+            <Button BackgroundColor="{DynamicResource MyColor3}" TextColor="White" Text="Approval code" FontFamily="Strande2" FontSize="Large" HeightRequest="45" WidthRequest="350" Clicked="AprpovalCode" IsVisible="{Binding IsVisibleFromCode}"/>
+            
+            <Label Text="Enter new password:" Margin="7,0,0,0" FontFamily="Strande2"  TextColor="{DynamicResource MyColor2}" IsVisible="{Binding IsVisiblePassword}"/>
+            <Entry Text="{Binding UpdatePassword.Password}" Margin="7,0,0,7" ClearButtonVisibility="WhileEditing" IsVisible="{Binding IsVisiblePassword}"/>
+        </StackLayout>
+
+
+
+        <StackLayout Grid.Row="8">
+            <Button BackgroundColor="{DynamicResource MyColor3}" TextColor="White" Text="Send recovery code" FontFamily="Strande2" FontSize="Large" HeightRequest="45" WidthRequest="350" Clicked="Save" IsVisible="{Binding IsVisiblePassword}"/>
+        </StackLayout>
+    </Grid>
+
+
+</ContentPage>

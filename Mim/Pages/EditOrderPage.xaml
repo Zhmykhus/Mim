@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Mim.Pages.EditOrderPage"
+             Title="EditOrderPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Source="{Binding Order.Product.Image, Mode=OneWay, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="120" HeightRequest="120"/>
+            <VerticalStackLayout Grid.Column="1">
+                <Label Text="{Binding Order.Id, StringFormat='Номер заказа: {0}'}"/>
+                <Label Text="{Binding Order.Product.Title}"/>
+                <Label Text="{Binding Order.Price, StringFormat='{0} руб.'}"/>
+                <Label Text="{Binding Order.Status}"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Picker ItemsSource="{Binding OrderStatuses}" SelectedItem="{Binding SelectedOrderStatus}" Margin="5" HeightRequest="45" ItemDisplayBinding="{Binding Title}"/>
+
+        <Button Text="Сохранить" Clicked="Save" Margin="5"/>
+    </VerticalStackLayout>
+</ContentPage>

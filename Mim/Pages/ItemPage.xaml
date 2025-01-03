@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Mim.Pages.ItemPage"
+             Title="ItemPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView >
+        <VerticalStackLayout Margin="5" HorizontalOptions="Start">
+        <Image Source="{Binding Product.Image, Mode=OneWay, Converter={StaticResource ByteArrayToImageSourceConverter}}" HeightRequest="220" WidthRequest="200" Grid.Row="0"/>
+        <Label Text="{Binding Product.Article, StringFormat='Артикул: {0}'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.Title, StringFormat='Название: {0}'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.Cost, StringFormat='Цена: {0} руб.'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.Quantity, StringFormat='Кол-во на складе: {0} шт.'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.Description, StringFormat='Описание: {0}'}" WidthRequest="200" HeightRequest="45"/>
+        <Label Text="{Binding Product.Discount, StringFormat='Скидка: {0}%'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.CategoryName, StringFormat='Категория: {0}%'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.SizeName, StringFormat='Размер: {0}%'}" WidthRequest="200" HeightRequest="45" />
+        <Label Text="{Binding Product.ProviderName, StringFormat='Поставщик: {0}%'}" WidthRequest="200" HeightRequest="45" />
+
+        <HorizontalStackLayout>
+            <Button WidthRequest="50" HeightRequest="50" Text="★" Clicked="AddWishList" Margin="5"/>
+            <Button WidthRequest="50" HeightRequest="50" Text="🛒" Clicked="AddCart" Margin="5"/>
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding Reviews}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="5" >
+                        <Label Text="Пользователь" Margin="5,0,0,0"/>
+                        <Label Text="{Binding Estimation, StringFormat='Оценка: {0}/5'}" Margin="5,0,0,0"/>
+                        <Label Text="{Binding Descriptoin}" Margin="5"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

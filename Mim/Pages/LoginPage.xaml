@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mim.Pages.LoginPage"
+             Title="Вход"
+             Shell.NavBarIsVisible="False">
+   
+    <Grid BackgroundColor="{StaticResource MyColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <!--<Path Stroke="#fff" Data="m0.30001,0l499,0l0,128.48327c-122.5,64.30167 -322.5,65.89076 -449,7.2429c0,-45.25313 0,-90.473z" Fill="#1f1053"/>-->
+
+        <StackLayout>
+            <Frame BackgroundColor="{StaticResource MyColor}" HeightRequest="60" WidthRequest="60" CornerRadius="30" Padding="0" Margin="0, 100, 0, 0" HorizontalOptions="Center">
+                <Image Source="logout.svg" Aspect="AspectFill" Margin="0"/>
+            </Frame>
+        </StackLayout>
+
+        <Grid RowSpacing="5" Grid.Row="1" Margin="20,20,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Text="Wellcome to MIM!"  FontFamily="Strande2" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
+            <Label Grid.Row="2" Text="Sign in to continue"  FontFamily="Strande2" HorizontalOptions="Center" FontSize="Subtitle" />
+
+            <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Frame BackgroundColor="Transparent" BorderColor="{StaticResource MyColor2}" Padding="0"  HorizontalOptions="CenterAndExpand" CornerRadius="30">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="{StaticResource MyColor}" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                            <Image Source="profile.svg" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <Entry  Text="{Binding Login}"  FontFamily="Strande2" Placeholder="Username                                                                                      " TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="Transparent" BorderColor="{StaticResource MyColor2}" Margin="0,15,0,0" Padding="0"  HorizontalOptions="CenterAndExpand" CornerRadius="30">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="{StaticResource MyColor}" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                            <Image Source="lock.svg" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <Entry x:Name="Pass" Text="{Binding Password}" IsPassword="True"  FontFamily="Strande2" Placeholder="Password                                                                                         " TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
+                    
+                    <Button Margin="220,0,0,0" FontFamily="Strande2" Clicked="Recover" BackgroundColor="{StaticResource MyColor}"  Text="Forgot Password?" TextColor="{StaticResource MyColor3}" FontAttributes="Bold"  />
+                </StackLayout>
+
+                <Button Text="SIGN IN"  FontFamily="Strande2" Clicked="Entry_Button" BackgroundColor="{StaticResource MyColor3}" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0"/>
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
+                    <Label Text="New User?"  FontFamily="Strande2" TextColor="DarkGray" FontSize="Small"/>
+                    <Button Text="Sign up" Clicked="Registr" FontFamily="Strande2" TextColor="{StaticResource MyColor3}" BackgroundColor="{StaticResource MyColor}" FontAttributes="Bold" FontSize="Small"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </Grid>
+    </Grid>
+    
+</ContentPage>
